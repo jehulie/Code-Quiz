@@ -1,23 +1,18 @@
-var timerEl = document.querySelector(".timer");
+var timerEl = document.querySelector(".timer-count");
 var scoreEl = document.querySelector(".viewScores");
 var challengeEl = document.querySelector(".challenge");
 var questionEl = document.querySelector(".question");
 var contentEl = document.querySelector(".content");
 
-// var chosenWord = "";
-// var numBlanks = 0;
 var scoreCounter = 0;
 var initials = "";
 // var isWin = false;
 var timer;
 var timerCount;
 
-// Arrays used to create blanks and letters on screen
-// var lettersInChosenWord = [];
-// var blanksLetters = [];
-
-// Array of words the user will guess
-// var words = ["variable","array", "modulus", "object", "function", "string", "boolean"];
+// Arrays used to content on the screen
+// var questions = [];
+// var choices = [];
 
 // The init function is called when the page loads 
 function init() {
@@ -49,7 +44,7 @@ function startTimer() {
   // Sets timer
   timer = setInterval(function() {
     timerCount--;
-    timerElement.textContent = timerCount;
+    timerEl.textContent = timerCount;
     if (timerCount >= 0) {
       // Tests if win condition is met
       // if (isWin && timerCount > 0) {
@@ -80,14 +75,16 @@ function loadContents() {
 // Updates keepScore counter on screen and saves count to client storage
 function keepScore() {
   score.textContent = keepCounter;
+  // right.textContent = "Correct!"
   localStorage.setItem("keepCount", keepCounter);
 }
 
-// Updates lose count on screen and sets lose count to client storage
-// function setLosses() {
-//   lose.textContent = loseCounter;
-//   localStorage.setItem("loseCount", loseCounter);
-// }
+// Conditional statement that takes time away from timer if answer is wrong
+function wrongAnswer() {
+  // if eventlistener - click - !answer - subtract 5 seconds from timer
+  // wrong.textContent = "Wrong!"
+  // maybe update timer text on screen? 
+}
 
 // These functions are used by init
 function getScore() {
@@ -100,11 +97,12 @@ function getScore() {
     // If a value is retrieved from client storage set the keepCounter to that value
     keepCounter = storedWins;
   }
-  //Render score count to page
-  win.textContent = keepCounter;
 }
-
 // Do the same as above for initials of user
+
+//Render score count when click on scoreEl - event listener
+  // Put details in a pop-up window? Alert window?
+    // The current highest score is + score + by + initials
 
 // Attach event listener to document to listen for key event - selecting multiple choice answers
 // document.addEventListener("keydown", function(event) {
@@ -133,3 +131,5 @@ function resetQuiz() {
 }
 // Attaches event listener to button
 resetButton.addEventListener("click", resetQuiz);
+
+//  Add play again button?
