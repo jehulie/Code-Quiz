@@ -5,29 +5,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   <body>
     <header>
-        <h1 class= "large-font">Code Quiz</h1>
         <div class="inline">
             <p class="viewScores">View High Scores</p>
             <p class="timer">Timer: <span class="timer-count">0</span></p>
         </div>
+        <div class="d-flex justify-content-center">
+          <h1>Code Quiz</h1>
+        </div>
+        
     </header>
 
     <main>
       <section>
-        <div class="card-quiz">
-            <!-- Do I even need h3 and h4? -->
-            <h3 class="challenge" style="text-align: center;"></h3>
-            <h4 class="question" style="text-align: center;"></h4>
-            <div id="content"></div>
-            <div id="right-wrong"></div> 
+          <div class="card text-center">
+            <div class="card-body">
+              <div class="card-content">
+              <h2 class="card-title">The Challenge</h5>
+              <p class="card-text">Try to answer the following code-related questions within the time limit. 
+                <br>
+                Keep in mind that incorrect answers will penalize your score time by ten seconds!
+              </p>
+              <a href="#" class="btn btn-success custom-btn">Start</a>
+            </div>
+            <div class="card-footer text-muted">
+              Press the button when you're ready!
+            </div>
         </div>
+      </div>
       </section>
     </main>
 
-    <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+    <script src="./script.js"></script>
   </body>
 </html>

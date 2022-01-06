@@ -1,67 +1,64 @@
 var timerEl = document.querySelector(".timer-count");
 var scoreEl = document.querySelector(".viewScores");
-var challengeEl = document.querySelector(".challenge");
-var questionEl = document.querySelector(".question");
-var contentEl = document.querySelector(".content");
+var contentEl = document.querySelector(".card-content");
+var footerEl = document.querySelector(".card-footer");
+var startEl = document.querySelector(".btn");
 
 var scoreCounter = 0;
 var initials = "";
-// var isWin = false;
 var timer;
 var timerCount;
 
-// Arrays used for quiz content on the screen
-// var questions = [{
-//   question: "Commonly used data types DO NOT include:",
-//   choices: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
-//   correctAnswer: 2
-// }, {
-//   question: "The condition in an if / else statement is enclosed within _____.",
-//   choices: ["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
-//   correctAnswer: 2
-// }, {
-//   question: "Arrays in JavaScript can be used to store ____.",
-//   choices: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
-//   correctAnswer: 3
-// }, {
-//   question: "String values must be enclosed within _____ when being assigned to variables.",
-//   choices: ["1. commas", "2. curly brackets", "3. quotes", "4. parentheses"],
-//   correctAnswer: 2
-// }, {
-//   question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-//   choices: ["1. JavaScript", "2. terminal / bash", "3. for loops", "4. console log"],
-//   correctAnswer: 3
-// }];
-
-// Need a var or function with initial content?
-  // Centered <h1> Coding Quiz Challenge
-  // Centered <p> Try to answer the following code-related questions within the time limit. 
-  // Keep in mind that incorrect answers will penalize your score time by ten seconds!
-  // Centered button “Start Quiz” 
-    // when clicked, start timer & replace above text with quiz content
+// Arrays of questions used for quiz content on the screen
+var questions = [{
+  question: "Commonly used data types DO NOT include:",
+  choices: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
+  correctAnswer: 2
+}, {
+  question: "The condition in an if / else statement is enclosed within _____.",
+  choices: ["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
+  correctAnswer: 2
+}, {
+  question: "Arrays in JavaScript can be used to store ____.",
+  choices: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
+  correctAnswer: 3
+}, {
+  question: "String values must be enclosed within _____ when being assigned to variables.",
+  choices: ["1. commas", "2. curly brackets", "3. quotes", "4. parentheses"],
+  correctAnswer: 2
+}, {
+  question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+  choices: ["1. JavaScript", "2. terminal / bash", "3. for loops", "4. console log"],
+  correctAnswer: 3
+}];
 
 // The init function is called when the page loads 
-function init() {
-  getScore();
-  // getTimerZero(); need to set Time to Zero
-}
+// function init() {
+//   clearInterval(timer);
+//   timerEl.textContent = 0;
+//   // getScore();
+// }
+// init ();
 
 // The startGame function is called when the start button is clicked
-function startGame() {
-  // isWin = false;
-  timerCount = 75;
+// function startGame() {
+  // timerCount = 75;
   // Prevents start button from being clicked when round is in progress
-  startButton.disabled = true;
-  loadContents()
-  startTimer()
-}
+  // startEl.disabled = true;
+  // startTimer()
+  // loadContent()
+// }
 
-// The setScore function is called when the scoreCounter condition is met
-function keepScore() {
-  // wordBlank.textContent = "YOU WON!!!🏆 ";
-  scoreCounter++
-  setScore()
-}
+// startGame();
+
+// startEl.addEventListener("click", startGame)
+
+// The keepScore function is called when the scoreCounter condition is met
+// function keepScore() {
+//   // wordBlank.textContent = "YOU WON!!!🏆 ";
+//   scoreCounter++
+//   setScore()
+// }
 
 // Function for recording initials along with score
 
@@ -69,61 +66,82 @@ function keepScore() {
 function startTimer() {
   // Sets timer
   timer = setInterval(function() {
-    timerCount--;
-    timerEl.textContent = timerCount;
-    if (timerCount >= 0) {
-      // Tests if win condition is met
-      // if (isWin && timerCount > 0) {
-        // Clears interval and stops timer
+    if (timerCount > 1) {
+      // Set the `textContent` of `timerEl` to show the remaining seconds
+      timerEl.textContent = timerCount;
+      // Decrement `timeLeft` by 1
+      timerCount--;
+     } else {
+        // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+        timerEl.textContent = '0';
+        // Use `clearInterval()` to stop the timer
         clearInterval(timer);
-        keepScore();
+        // Call the `displayMessage()` function
+        // displayMessage();
       }
+    }, 1000);
     }
-    // Tests if time has run out
-    if (timerCount === 0) {
-      // Clears interval
-      clearInterval(timer);
-      setScore();
-      startButton.disabled = false;
-    // }
-  }, 1000);
-}
+//     if (timerCount >0) {
+//       // Tests if win condition is met
+//       // if (isWin && timerCount > 0) {
+//       //   // Clears interval and stops timer
+//       //   clearInterval(timer);
+//       //   keepScore();
+//       }
+//     })
+//     // Tests if time has run out
+//     if (timerCount === 0) {
+//       // Clears interval
+//       clearInterval(timer);
+//       // setScore();
+//       // startEl.disabled = false;
+//     // }
+//   } 1000;
+// }
+
+// Attach event listener to start button to call startGame function on click
+$('#btn').click(function(){
+  startTimer();
+});
+// $(startEl).on("click", startTimer())
+// startEl.addEventListener("click", startTimer);
+
 
 // Loads content on screen
-function loadContents() {
+// function loadContents() {
   // Consists of functions - loadQuestion + loadChoices
   // Randomly picks from array??
-  }
   // Converts array into a string and renders it on the screen
   // wordBlank.textContent = blanksLetters.join(" ")
 // }
 
 // Updates keepScore counter on screen and saves count to client storage
-function keepScore() {
-  score.textContent = keepCounter;
-  // right.textContent = "Correct!"
-  localStorage.setItem("keepCount", keepCounter);
-}
+// function keepScore() {
+//   score.textContent = keepCounter;
+//   // right.textContent = "Correct!"
+//   localStorage.setItem("keepCount", keepCounter);
+// }
 
 // Conditional statement that takes time away from timer if answer is wrong
-function wrongAnswer() {
-  // if eventlistener - click - !answer - subtract 5 seconds from timer
-  // wrong.textContent = "Wrong!"
-  // maybe update timer text on screen? 
-}
+// function wrongAnswer() {
+//   // if eventlistener - click - !answer - subtract 5 seconds from timer
+//   // wrong.textContent = "Wrong!"
+//   // maybe update timer text on screen? 
+// }
 
 // These functions are used by init
-function getScore() {
+// function getScore() {
   // Get stored value from client storage, if it exists
-  var storedWins = localStorage.getItem("keepCount");
+  // var storedWins = localStorage.getItem("keepCount");
   // If stored value doesn't exist, set counter to 0
-  if (storedWins === null) {
-    keepCounter = 0;
-  } else {
+  // if (storedWins === null) {
+    // keepCounter = 0;
+  // } else {
     // If a value is retrieved from client storage set the keepCounter to that value
-    keepCounter = storedWins;
-  }
-}
+    // keepCounter = storedWins;
+  // }
+// }
+
 // Do the same as above for initials of user
 
 //Render score count when click on scoreEl - event listener
@@ -138,24 +156,18 @@ function getScore() {
 //   }
 // });
 
-// Attach event listener to start button to call startGame function on click
-startButton.addEventListener("click", startGame);
-
-// Calls init() so that it fires when page opened
-init();
-
 // Add reset button
-var resetButton = document.querySelector(".reset-button");
+// var resetButton = document.querySelector(".reset-button");
 
-function resetQuiz() {
-  // Clears high scores
-  keepCounter = 0;
-  initialsCounter = "";
-  // Renders score and initials counts and sets them into client storage
-  setScore()
-  setInitials()
-}
-// Attaches event listener to button
-resetButton.addEventListener("click", resetQuiz);
+// function resetQuiz() {
+//   // Clears high scores
+//   keepCounter = 0;
+//   initialsCounter = "";
+//   // Renders score and initials counts and sets them into client storage
+//   setScore()
+//   setInitials()
+// }
+// // Attaches event listener to button
+// resetButton.addEventListener("click", resetQuiz);
 
 //  Add play again button?

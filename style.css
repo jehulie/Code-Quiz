@@ -9,27 +9,25 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
-  background: linear-gradient(0deg, rgba(19,41,61,1) 0%, rgba(237,245,249,1) 63%);
+  background: linear-gradient(0deg, #003F63 0%, #A1A5A6 63%);
 }
 
 header {
   padding: 25px;
   margin-right: 20 px;
   margin-left: 20 px;
-  background: #13293d;
-  color: #fff;
-  border-bottom:20px #879274;
+  background: #353D40;
+  color: #D9D9D9;
+  border-bottom:20px #A1A5A6;
 }
 
-.large-font {
+h1 {
     font-size: 2.5em;
     text-align:center;
     margin-top: 20px;
 }
 
 .inline {
-    background: #13293d;
-    color: #fff;
     height: 40px;
     padding: 5px;
 }
@@ -38,12 +36,12 @@ header {
     padding: 0px 0px 0px 20px;
     float: left;
     display: inline-block;
-    font-size: 1.2em;
+    font-size: 1.0em;
 }
   
 .timer {
     padding: 0px 20px 0px 0px;
-    font-size: 1.2em;
+    font-size: 1.0em;
     float: right;
 }
 
@@ -61,16 +59,42 @@ section {
   border-radius: 8px;
 }
 
-.card-quiz {
-    background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(187,124,33,0.604079131652661) 100%);
+.card {
+    background: radial-gradient(circle, #c0cc9e  0%, #adcf4d 100%);
     border: 1px solid #eceff1;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
     rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
-    margin: auto;
+    /* margin: auto;
     padding: 20px;
     min-width: 460px;
-    min-height: 460px;
+    min-height: 460px; */
+}
+
+h2 {
+  font-size: 2.0em;
+  text-align:center;
+  margin-top: 20px;
+  color: #353D40;
+}
+
+p {
+  font-size: 0.8em;
+  text-align:center;
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.custom-btn {
+  background-color: #003F63;
+  color: #D9D9D9;
+  margin: 10px;
+}
+
+.card-footer {
+  color: #0a0b0c;
+  padding: 20px;
+  margin: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -86,11 +110,15 @@ section {
   }
 
   .viewScores {
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
   
   .timer {
-    font-size: 1.5em;
+    font-size: 1.25em;
+  }
+
+  p {
+    font-size: 1.0em;
   }
 
 }
@@ -113,6 +141,10 @@ section {
   
   .timer {
     font-size: 1.8em;
+  }
+
+  p {
+    font-size: 1.25em;
   }
 
   }
