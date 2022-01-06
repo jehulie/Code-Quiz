@@ -41,17 +41,13 @@ var questions = [{
 // init ();
 
 // The startGame function is called when the start button is clicked
-// function startGame() {
-  // timerCount = 75;
+function startGame() {
+  timerCount = 75;
   // Prevents start button from being clicked when round is in progress
   // startEl.disabled = true;
-  // startTimer()
+  startTimer()
   // loadContent()
-// }
-
-// startGame();
-
-// startEl.addEventListener("click", startGame)
+}
 
 // The keepScore function is called when the scoreCounter condition is met
 // function keepScore() {
@@ -100,15 +96,12 @@ function startTimer() {
 // }
 
 // Attach event listener to start button to call startGame function on click
-$('#btn').click(function(){
-  startTimer();
-});
-// $(startEl).on("click", startTimer())
-// startEl.addEventListener("click", startTimer);
+$(startEl).on("click", startGame())
+// startEl.addEventListener("click", startGame);
 
 
 // Loads content on screen
-// function loadContents() {
+// function loadContent() {
   // Consists of functions - loadQuestion + loadChoices
   // Randomly picks from array??
   // Converts array into a string and renders it on the screen
