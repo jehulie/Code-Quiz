@@ -2,7 +2,7 @@ var timerEl = document.querySelector(".timer-count");
 var scoreEl = document.querySelector(".viewScores");
 var contentEl = document.querySelector(".card-content");
 var footerEl = document.querySelector(".card-footer");
-var startEl = document.getElementById("start-btn");
+var startEl = document.getElementById("btn");
 
 var scoreCounter = 0;
 var initials = "";
@@ -38,7 +38,7 @@ function startGame() {
   // Prevents start button from being clicked when round is in progress
   startEl.disabled = true;
   startTimer()
-  // loadContent()
+  loadContent()
 }
 
 // The setTimer function starts and stops the timer and triggers setScore() 
@@ -50,13 +50,13 @@ function startTimer() {
       timerEl.textContent = timerCount;
       // Decrement `timeLeft` by 1
       timerCount--;
+      // Do I need to add another conditional - else if - when all questions answered before time runs out? 
      } else {
         // Once `timeLeft` gets to 0, set `timerEl` to an empty string
         timerEl.textContent = '0';
         // Use `clearInterval()` to stop the timer
         clearInterval(timer);
-        // Call the `displayMessage()` function
-        // displayMessage();
+        // setScore();
       }
     }, 1000);
     }
@@ -64,39 +64,52 @@ function startTimer() {
 // Attach event listener to start button to call startGame function on click
 startEl.addEventListener("click", startGame);
 
+// Highlights the button when clicked
+startEl.setAttribute("style", "background-image:highlightedButton.png");
 
 // Loads content on screen
 // function loadContent() {
-  // Replace existing html content with quizContent array
+  // Do following function to each array element
+    //quizContent.forEach( **name of function**)
+
+  // Replace existing html content with quizContent array starting with item [0]
   // contentEl.textContent =
-    // <h2>quizContent[question]<h2>,
+    // <h2>quizContent.question<h2>
       // <ul>
-        // <li>quizContent[choices[0]]</li>...or buttons?
-        // <li>quizContent[choices[1]]</li>
-        // <li>quizContent[choices[2]]</li>
+        // <li>quizContent.choices[0]]</li>...or buttons?
+        // <li>quizContent.choices[1]]</li>
+        // <li>quizContent.choices[2]]</li>
         // <li>quizContent[choices[3]]</li>
         // <li>quizContent[choices[4]]</li>
       // </ul>
 // }
 
-// Attach event listener -on click- to quizContent[choices] to confirm quizContent[correctAnswer]
-//   if (timerCount === 0) {
-//     return;
+// Attach event listener -on click- to quizContent.choices[i] to confirm quizContent[correctAnswer]
+  // quizContent.choices[i].addEventListener("click", rightWrong);
+  //   if (timerCount === 0) {
+  //     return;
 
-// The keepScore function is called when the scoreCounter condition is met
+// function for confirming if the click is right or wrong
+// function rightWrong() {
+    // conditional - if quizContent.choice = index that matches quizContent.answer
+    // footerEl.textContent = "Correct!";
+    // call the function - keepScore()
+    // else if quizContent.choice != quizContent.answer
+    // call the function - wrongAnswer()
+// }
+
+// The keepScore function is called when the rightWrong condition is met
 // function keepScore() {
-//   // footerEl.textContent = "Correct!";
 //   scoreCounter++
 //   setScore()
 // }
 
 // Function for recording initials along with score
 
-// Updates scoreScore counter and saves count to client storage
+// Updates scoreCounter and saves count to client storage
 // function setScore() {
 //   score.textContent = scoreCounter;
-//   // right.textContent = "Correct!"
-//   localStorage.setItem("keepCount", keepCounter);
+//   localStorage.setItem("keepScore", scoreCounter);
 // }
 
 // Conditional statement that takes time away from timer if answer is wrong
@@ -109,10 +122,10 @@ startEl.addEventListener("click", startGame);
 // These functions are used by init
 // function getScore() {
   // Get stored value from client storage, if it exists
-  // var storedWins = localStorage.getItem("keepCount");
+  // var storedWins = localStorage.getItem("keepScore");
   // If stored value doesn't exist, set counter to 0
   // if (storedWins === null) {
-    // keepCounter = 0;
+    // scoreCounter = 0;
   // } else {
     // If a value is retrieved from client storage set the keepCounter to that value
     // keepCounter = storedWins;
@@ -122,8 +135,9 @@ startEl.addEventListener("click", startGame);
 // Do the same as above for initials of user
 
 //Render score count when click on scoreEl - event listener
-  // Put details in a pop-up window? Alert window?
-    // The current highest score is + score + by + initials
+    // scoreEl.addEventListener("click", displayScore)
+    // Put details in a pop-up window? Alert window?
+      // The current highest score is + score + by + initials
 
 
 // Add reset button
@@ -131,7 +145,7 @@ startEl.addEventListener("click", startGame);
 
 // function resetQuiz() {
 //   // Clears high scores
-//   keepCounter = 0;
+//   keepScore = 0;
 //   initialsCounter = "";
 //   // Renders score and initials counts and sets them into client storage
 //   setScore()
