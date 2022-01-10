@@ -8,7 +8,6 @@ var quizChoices = document.getElementById("questions");
 var scoreScreen = document.getElementById("score-screen");
 var submitButton = document.getElementById("submit-button");
 var userInitials = document.getElementById("initials");
-var playAgain = document.getElementById("btn-again");
 
 var currentQindex = 0;
 var scoreCounter = 0;
@@ -55,7 +54,7 @@ function startGame() {
 function startTimer() {
   // Sets timer
   timer = setInterval(function() {
-    if (timerCount >= 1) {
+    if (timerCount > 1) {
       // Set the `textContent` of `timerEl` to show the remaining seconds
       timerEl.textContent = timerCount;
       // Decrement `timeLeft` by 1
@@ -66,7 +65,6 @@ function startTimer() {
         timerEl.textContent = '0';
         // Use `clearInterval()` to stop the timer
         clearInterval(timer);
-        finalScreen();
         // setScore();
       }
     }, 1000);
@@ -137,26 +135,25 @@ function saveHighscore(){
   };
   highScore.push(newHighscore);
   localStorage.setItem("highScores",JSON.stringify(highScore));
-  console.log(highScore);
-  console.log(localStorage);
 }
 
 submitButton.onclick = saveHighscore;
 
-playAgain.onclick = restartQuiz;
 
-function restartQuiz(){
-  scoreScreen.setAttribute("class", "hide");
-  window.location.reload();
-}
-
-// "View High Scores" - scoresEl - link
+// Function for recording initials along with score
+    // Disable Submit button after first click
+    // Play Again - or Back - button to return to initial home page
+    // On click - Play Again - resets homepage & updates highest score to be accessed by first page 
+    // "View High Scores" - scoresEl - link
 
 //Render highest score count when click on scoreEl - event listener
     // scoreEl.addEventListener("click", displayScore)
     // function to filter for highest score 
     // Put details in a pop-up window? Alert window?
       // The current highest score is + score + by + initials
+
+// Add reset button
+// var resetButton = document.querySelector(".reset-button");
 
 // function resetQuiz() {
 //   // Clears high scores
@@ -170,3 +167,4 @@ function restartQuiz(){
 // // Attaches event listener to button
 // resetButton.addEventListener("click", resetQuiz);
 
+//  Add play again button?

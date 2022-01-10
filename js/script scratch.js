@@ -108,6 +108,34 @@ $(startEl).on("click", startGame())
   // wordBlank.textContent = blanksLetters.join(" ")
 // }
 
+  // Replace existing html content with quizContent array starting with quizContent[1] - 
+    // how to show quizContent for one array item at a time on the web page?
+  // contentEl.textContent =
+
+// as loop for answer list?
+// for (var i = 0; i < quizContent.choices.length; i++) {function
+  // var quizQ = document.createElement('h3');
+  // var quizAns = document.createElement('btn');
+  //  quizQ.textContent = quizContent[i].question;
+  //  quizAns.textContent = quizContent[i].choices[i];
+//       contentEl.text(quizQ);
+//       contentEL.text(quizA);
+  // }
+
+  // Do following function to each array element - how to show quizContent for one array item at a time?
+    //quizContent.forEach( **name of function**)...or just regular "for" loop?
+
+    // <h2>quizContent.question<h2>
+      // <ul>
+        // <li><btn>quizContent.choices[0]]</btn></li>...or buttons?
+        // <li>quizContent.choices[1]]</li>
+        // <li>quizContent.choices[2]]</li>
+        // <li>quizContent[choices[3]]</li>
+        // <li>quizContent[choices[4]]</li>
+      // </ul>
+// }
+
+
 // Updates keepScore counter on screen and saves count to client storage
 // function keepScore() {
 //   score.textContent = keepCounter;
