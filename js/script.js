@@ -1,5 +1,6 @@
 var timerEl = document.querySelector(".timer-count");
 var scoreEl = document.querySelector(".viewScores");
+var startScreen = document.getElementById("start-screen");
 var contentEl = document.querySelector(".card-content");
 var footerEl = document.querySelector(".card-footer");
 var startEl = document.getElementById("btn");
@@ -9,6 +10,8 @@ var scoreScreen = document.getElementById("score-screen");
 var submitButton = document.getElementById("submit-button");
 var userInitials = document.getElementById("initials");
 var playAgain = document.getElementById("btn-again");
+var viewScores = document.getElementById("highScores-section");
+var scoresTable = document.getElementById ('highScores-display');
 
 var currentQindex = 0;
 var scoreCounter = 0;
@@ -41,7 +44,6 @@ var quizContent = [{
 
 // The startGame function is called when the start button is clicked
 function startGame() {
-  var startScreen = document.getElementById("start-screen");
   startScreen.setAttribute("class", "hide");
   questionsEL.classList.remove("hide");
   timerCount = 75;
@@ -139,10 +141,29 @@ function saveHighscore(){
   localStorage.setItem("highScores",JSON.stringify(highScore));
   console.log(highScore);
   console.log(localStorage);
-}
+  viewScores.classList.remove("hide");
+  loadScores();
+  }
 
+  // This function appends a display of the high scores after the user submits initials 
+  // ** Need to fix format of displayed data **
+function loadScores(){
+  scoresTable.setAttribute("value",localStorage);
+    var scoresResults = JSON.parse(localStorage.getItem('highScores'));
+    console.log(scoresResults);
+    scoresResults.sort (
+      function(a, b){return b.score-a.score}
+    );
+    for (var i=0; i<scoresResults.length; i++){
+      var listEl = document.createElement('li')
+      listEl.textContent = scoresResults[i].initials + ": " + scoresResults[i].score
+      scoresTable.appendChild(listEl);
+    }   
+}
+ 
 submitButton.onclick = saveHighscore;
 
+// Takes user back to homepage on click
 playAgain.onclick = restartQuiz;
 
 function restartQuiz(){
@@ -150,23 +171,22 @@ function restartQuiz(){
   window.location.reload();
 }
 
-// "View High Scores" - scoresEl - link
+//Lets user view high scores on home page - on click - before starting the quiz
+scoreEl.addEventListener("click", displayScores);
+
+function displayScores(){
+  startScreen.setAttribute("class", "hide");
+  footerEl.setAttribute("class", "hide");
+  viewScores.classList.remove("hide");
+  loadScores();
+  var returnHome = document.getElementById('back-button');
+  returnHome.classList.remove("hide");
+  returnHome.onclick = restartQuiz;
+}
 
 //Render highest score count when click on scoreEl - event listener
     // scoreEl.addEventListener("click", displayScore)
     // function to filter for highest score 
     // Put details in a pop-up window? Alert window?
       // The current highest score is + score + by + initials
-
-// function resetQuiz() {
-//   // Clears high scores
-//   keepScore = 0;
-//   initialsCounter = "";
-//   // Renders score and initials counts and sets them into client storage
-//   setScore()
-//   setInitials()
-// }
-
-// // Attaches event listener to button
-// resetButton.addEventListener("click", resetQuiz);
 
