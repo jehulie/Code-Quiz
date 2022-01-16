@@ -146,7 +146,6 @@ function saveHighscore(){
   }
 
   // This function appends a display of the high scores after the user submits initials 
-  // ** Need to fix format of displayed data **
 function loadScores(){
   scoresTable.setAttribute("value",localStorage);
     var scoresResults = JSON.parse(localStorage.getItem('highScores'));
@@ -183,10 +182,3 @@ function displayScores(){
   returnHome.classList.remove("hide");
   returnHome.onclick = restartQuiz;
 }
-
-//Render highest score count when click on scoreEl - event listener
-    // scoreEl.addEventListener("click", displayScore)
-    // function to filter for highest score 
-    // Put details in a pop-up window? Alert window?
-      // The current highest score is + score + by + initials
-
